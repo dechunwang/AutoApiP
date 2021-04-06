@@ -58,3 +58,14 @@ jobs:
         CLIENT_SECRET_n: ${{ secrets.CLIENT_SECRET_n }}
       run: |
         python updatetoken.py
+        
+    - name: append  random string to readme.md
+      run: |
+        echo "$RANDOM" >> README.md
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GH_TOKEN }}
+        branch: master
+
+
